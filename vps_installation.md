@@ -35,7 +35,7 @@ MariaDB [(none)]> SHOW DATABASES;
 ```
 
 ## Install Java and Apache Tomcat server
-###Java installation
+### Java installation
 1. Connect as root : `$ su`
 2. Install package to add _add-apt-repository_ command : `$ apt-get install software-properties-common`
 3. Add package for java : `$ add-apt-repository ppa:webupd8team/java`
