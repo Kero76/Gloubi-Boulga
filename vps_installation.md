@@ -19,7 +19,7 @@ A guide to configure my VPS.
 
 ## Install MySQL service (as yourself)
 1. Connect as root : `$ su`
-2. Install apache2 : `$ apt-get install mysql-server mysql-client`
+2. Install Mysql server and Mysql client : `$ apt-get install mysql-server mysql-client`
 3. Execute `$ mysql` and type `SHOW DATABASES;` and see the result : 
 ```
 MariaDB [(none)]> SHOW DATABASES;
@@ -33,3 +33,44 @@ MariaDB [(none)]> SHOW DATABASES;
 3 rows in set (0.00 sec)
 
 ```
+
+## Install Java and Apache Tomcat server
+###Java installation
+1. Connect as root : `$ su`
+2. Install package to add _add-apt-repository_ command : `$ apt-get install software-properties-common`
+3. Add package for java : `$ add-apt-repository ppa:webupd8team/java`
+4. Update your system : `$ apt-get update`
+5. Add Java8 : `$ apt-get install oracle-java8-installer`
+6. Set Java8 as default version : `$ apt-get install oracle-java8-set-default`
+7. Check the version of java installed : `$ java -version`
+8. Add JDK : `$ apt-get install openjdk-8-jdk` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
