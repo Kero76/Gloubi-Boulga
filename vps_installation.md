@@ -45,8 +45,41 @@ MariaDB [(none)]> SHOW DATABASES;
 7. Check the version of java installed : `$ java -version`
 8. Add JDK : `$ apt-get install openjdk-8-jdk` 
 
-
-
+### Tomcat installation
+1. Instantiate global variable JAVA_HOME, JRE_HOME and CATALINA_HOME :
+```
+$ echo "export CATALINA_HOME="/opt/tomcat9"" >> /etc/environment
+$ echo "export JAVA_HOME="/usr/lib/jvm/java-8-oracle"" >> /etc/environment
+$ echo "export JRE_HOME="/usr/lib/jvm/java-8-oracle/jre"" >> /etc/environment
+```
+2. Download Apache Tomcat binary source : `$ wget http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/tomcat-9/v9.0.0.M26/bin/apache-tomcat-9.0.0.M26.tar.gz`
+3. Decompress source : `$ tar xvzf apache-tomcat-9.0.0.M26.tar.gz`
+4. Rename folder : `$ mv apache-tomcat-9.0.0.M26 tomcat9`
+5. Move Tomcat source on _/opt_ : `$ mv tomcat9/ /opt/`
+6. Go on `http://your_server_ip:8080` and check if you see the page of Tomcat
+7. Add role and user on _CATALINA_HOME/conf/tomcat-users.xml_ : 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+  <role rolename="manager-gui"/>
+  <user username="admin_name" password="your_password" roles="manager-gui"/>
+  <user username="your_name" password="your_password" roles="manager-gui"/>
+</tomcat-users>
+```
+8. Comment **Valve** attribute on _CATALINA_HOME/webapps/manager/META_INF/context.xml_ : 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiResourceLocking="false" privileged="true" >
+    <!-- 
+    <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> 
+    -->
+    <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+</Context>
+```
+9. Go on `http://your_server_ip:8080` and try to connect on Manager App page.
 
 
 
