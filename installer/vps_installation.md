@@ -9,7 +9,7 @@ A guide to configure my VPS.
 5. Restart ssh service : `$ /etc/init.d/ssh restart`
 6. Exit connection.
 
-## Install Apache2 server (as yourself)
+## Install Apache2 server
 1. Connect as root : `$ su`
 2. Install apache2 : `$ apt-get install apache2`
 3. Go on your web browser on the url of your server and check if apache work : _It Work!_ webpage
@@ -17,7 +17,7 @@ A guide to configure my VPS.
 5. Add the following code on _/var/www/html/info.php_ : `<?php phpinfo() ?>;`
 6. Go on page `http://your_server_ip/info.php` and check the version of PHP.
 
-## Install MySQL service (as yourself)
+## Install MySQL service
 1. Connect as root : `$ su`
 2. Install Mysql server and Mysql client : `$ apt-get install mysql-server mysql-client`
 3. Execute `$ mysql` and type `SHOW DATABASES;` and see the result : 
@@ -31,8 +31,8 @@ MariaDB [(none)]> SHOW DATABASES;
 | performance_schema |
 +--------------------+
 3 rows in set (0.00 sec)
-
 ```
+4. Follow the documentation to add new user on mysql : [Adding User Accounts](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)
 
 ## Install Java and Apache Tomcat server
 ### Java installation
@@ -81,29 +81,19 @@ $ echo "export JRE_HOME="/usr/lib/jvm/java-8-oracle/jre"" >> /etc/environment
 ```
 9. Go on `http://your_server_ip:8080` and try to connect on Manager App page.
 
+## Install Composer
+1. Connect as root : `$ su`
+2. Update your system : `$ apt-get update`
+3. Install usefull dependencies for Composer : `$ apt-get install curl`
+4. Download composer source with curl : `$ curl -s https://getcomposer.org/installer | php`
+5. Move _composer.phar_ on _/usr/local/bin/composer_ : `$ mv composer.phar /usr/local/bin/composer`
+6. Check if composer is correctly installed with : `$ composer --version`. This command return `Composer version 1.5.1 2017-08-09 16:07:22` with your version and your date.
 
+## Install Unzip
+1. Connect as root : `$ su`
+2. Update your system : `$ apt-get update`
+3. Install unzip : `$ apt-get install unzip`
+4. Use unzip to unzip project download from Github : `$ unzip master.zip -d dest_folder` 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# How to ?
+- Download Github source : `$ wget https://github.com/username/repository/archive/master.zip`
