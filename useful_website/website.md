@@ -33,6 +33,9 @@
 
 
 # Links About Tools
+## Code Analyzer
+- SensioLabsInsight : [https://insight.sensiolabs.com/](https://insight.sensiolabs.com/)
+
 ## Writing Tools
 - Stackedit : [https://stackedit.io/](https://stackedit.io/)
 - Table Generator : [http://www.tablesgenerator.com/markdown_tables](http://www.tablesgenerator.com/markdown_tables)
