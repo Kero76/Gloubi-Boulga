@@ -97,3 +97,4 @@ $ echo "export JRE_HOME="/usr/lib/jvm/java-8-oracle/jre"" >> /etc/environment
 
 # How to ?
 - Download Github source : `$ wget https://github.com/username/repository/archive/master.zip`
+- Change locale when perl error occurred : `$ local-gen fr_FR.UTF-8 && dpkg-reconfigure locales`.
