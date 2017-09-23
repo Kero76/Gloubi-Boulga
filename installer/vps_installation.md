@@ -9,13 +9,26 @@ A guide to configure my VPS.
 5. Restart ssh service : `$ /etc/init.d/ssh restart`
 6. Exit connection.
 
-## Install Apache2 server
+## Install & configure Apache server
+### Apache Installation
 1. Connect as root : `$ su`
 2. Install apache2 : `$ apt-get install apache2`
 3. Go on your web browser on the url of your server and check if apache work : _It Work!_ webpage
 4. Install PHP7 and some other libraries : `$ apt-get install php7.0 libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php7.0-gd php7.0-mcrypt php7.0-intl php7.0-sqlite3 php7.0-gmp php7.0-mbstring php7.0-xml php7.0-zip`
 5. Add the following code on _/var/www/html/info.php_ : `<?php phpinfo() ?>;`
 6. Go on page `http://your_server_ip/info.php` and check the version of PHP.
+
+### Apache Configuration
+#### Remove server information when 404 error occurred
+1. Connect as root : `$ su`
+2. Open file _apache2.conf_ : `$ nano /etc/apache2/apache2.conf`
+3. Add the following instructions at the end of the file :
+```
+# Remove information about server when error HTTP 404 ocurred.
+ServerSignature Off
+ServerTokens Prod
+```
+4. Restart Apache : `$ systemctl restart apache2`
 
 ## Install MySQL service
 1. Connect as root : `$ su`
